@@ -103,11 +103,11 @@ one shared `AssistantState` dict passed through all three.
 All 4 metrics implemented:
 
 | Metric | Type | Needs reference? |
-|---|---|
-| Faithfulness | No |
-| Answer Relevancy | No |
-| Context Precision | No (`LLMContextPrecisionWithoutReference`) |
-| Context Recall | Yes |
+|---|---|---|
+| Faithfulness | Mandatory | No |
+| Answer Relevancy | Mandatory | No |
+| Context Precision | Bonus | No |
+| Context Recall | Bonus | Yes |
 
 Judge model: Groq (same model used for generation) via `LangchainLLMWrapper`.
 Interpretation: score >= 0.8 Good, 0.5-0.8 Moderate, < 0.5 Poor.
