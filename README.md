@@ -104,10 +104,10 @@ All 4 metrics implemented:
 
 | Metric | Type | Needs reference? |
 |---|---|---|
-| Faithfulness | Mandatory | No |
-| Answer Relevancy | Mandatory | No |
-| Context Precision | Bonus | No |
-| Context Recall | Bonus | Yes |
+| Faithfulness | Mandatory |
+| Answer Relevancy | Mandatory |
+| Context Precision | Bonus |
+| Context Recall | Bonus |
 
 Judge model: Groq (same model used for generation) via `LangchainLLMWrapper`.
 Interpretation: score >= 0.8 Good, 0.5-0.8 Moderate, < 0.5 Poor.
