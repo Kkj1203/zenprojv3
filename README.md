@@ -2,13 +2,13 @@
 
 LangGraph + RAG + RAGAS + MCP assistant that answers questions over
 internal policy documents, scores its own answer, and writes an audit
-report to disk through an MCP server. Everything runs on free tiers only.
+report to disk through an MCP server. 
 
 ## Architecture Overview
 
 ```
 Phase 1 - ingestion (run once)
-  data/*.txt -> load -> chunk -> embed (Ollama) -> store in Chroma
+  data/*.txt -> load -> chunk -> embed (nomic-embed) -> store in Chroma
 
 Phase 2 - query (every question, the LangGraph part)
   question -> [Retriever] -> [Responder] -> [Evaluator] -> END
