@@ -78,11 +78,7 @@ the terminal you launched Streamlit from, not the browser.
 | Embeddings | Ollama, `nomic-embed-text` (local, free) |
 | Vector DB | Chroma, persisted to `chroma_db/` |
 | Retrieval | top-3 chunks by similarity |
-| Generation | Groq, `llama-3.3-70b-versatile`, answers only from retrieved context |
-
-**Why Groq + Ollama instead of one provider:** Groq is free and very fast
-for chat/generation but has no embeddings endpoint at all, so embeddings
-run locally via Ollama at zero cost instead.
+| Generation | Groq, `openai/gpt-oss-120b`, answers only from retrieved context |
 
 ## LangGraph Design
 
@@ -92,7 +88,7 @@ run locally via Ollama at zero cost instead.
 | `responder` | Prompts Groq with context + question, adds `answer` |
 | `evaluator` | Runs RAGAS, writes report via MCP, adds `scores` + `report_path` |
 
-Flow is strictly linear: `retriever -> responder -> evaluator -> END`,
+Flow is linear: `retriever -> responder -> evaluator -> END`,
 one shared `AssistantState` dict passed through all three.
 
 ## MCP Integration
@@ -121,7 +117,7 @@ a production setup would use a curated question/reference-answer test set.
 Judge model: Groq (same model used for generation) via `LangchainLLMWrapper`.
 Interpretation: score >= 0.8 Good, 0.5-0.8 Moderate, < 0.5 Poor.
 
-## Observability (requirement 5)
+## Observability
 
 No LangSmith needed. Every node prints a bordered `[NODE] -> / <-` block
 showing its input and output before/after running. One console capture
