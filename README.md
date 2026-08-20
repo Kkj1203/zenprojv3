@@ -50,11 +50,12 @@ cleanly. Re-run it if you ever delete and recreate `.venv/`.
 ## Execution Steps
 
 ```powershell
+# the browser UI:
+uv run streamlit run app.py
+
+# or
 uv run python main.py
 uv run python main.py "What is the meal expense limit for domestic travel?"
-
-# or the browser UI:
-uv run streamlit run app.py
 ```
 
 First run builds the Chroma store automatically. Delete `chroma_db/` to
