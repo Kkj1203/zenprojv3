@@ -64,8 +64,7 @@ re-ingest after changing files in `data/`.
 ## Frontend
 
 `app.py` is a minimal Streamlit UI: a text box, an "Ask" button, the
-answer, a table of the 4 RAGAS scores, and an expandable view of the
-retrieved chunks. It calls the exact same `build_graph()` / `build_vectorstore()`
+answer. It calls the exact same `build_graph()` / `build_vectorstore()`
 functions as `main.py` - the agentic system is identical, this is just a
 thin display layer on top. The node-by-node execution log still prints to
 the terminal you launched Streamlit from, not the browser.
