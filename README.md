@@ -103,17 +103,11 @@ one shared `AssistantState` dict passed through all three.
 All 4 metrics implemented:
 
 | Metric | Type | Needs reference? |
-|---|---|---|
-| Faithfulness | Mandatory | No |
-| Answer Relevancy | Mandatory | No |
-| Context Precision | Bonus | No (`LLMContextPrecisionWithoutReference`) |
-| Context Recall | Bonus | Yes |
-
-Context Recall always needs a ground-truth reference answer to check
-against - that's what it measures. Since there's no curated answer key
-for arbitrary questions here, the generated answer is reused as its own
-proxy reference. This is a simplification, flagged in the report output;
-a production setup would use a curated question/reference-answer test set.
+|---|---|
+| Faithfulness | No |
+| Answer Relevancy | No |
+| Context Precision | No (`LLMContextPrecisionWithoutReference`) |
+| Context Recall | Yes |
 
 Judge model: Groq (same model used for generation) via `LangchainLLMWrapper`.
 Interpretation: score >= 0.8 Good, 0.5-0.8 Moderate, < 0.5 Poor.
@@ -122,5 +116,5 @@ Interpretation: score >= 0.8 Good, 0.5-0.8 Moderate, < 0.5 Poor.
 
 No LangSmith needed. Every node prints a bordered `[NODE] -> / <-` block
 showing its input and output before/after running. One console capture
-of a run shows all three agents firing in order with real data - that's
+of a run shows all three agents firing in order with real data that's
 the node-by-node execution trace deliverable.
