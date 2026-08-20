@@ -102,8 +102,8 @@ one shared `AssistantState` dict passed through all three.
 
 All 4 metrics implemented:
 
-| Metric | Type | Needs reference? |
-|---|---|---|
+| Metric | Type |
+|---|---|
 | Faithfulness | Mandatory |
 | Answer Relevancy | Mandatory |
 | Context Precision | Bonus |
