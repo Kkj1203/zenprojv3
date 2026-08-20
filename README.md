@@ -38,7 +38,6 @@ ollama pull nomic-embed-text
 copy .env.example .env            # then edit .env, add GROQ_API_KEY
 ```
 
-```
 ## `patch_ragas.py` — what it's for
 
 The pinned `ragas` version imports a Google Vertex AI class that no
