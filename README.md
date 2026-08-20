@@ -25,10 +25,27 @@ Requirements: Python 3.11+, Node.js (for `npx`, used by the MCP server),
 ```powershell
 uv venv
 uv pip install -r requirements.txt
+uv run python patch_ragas.py      # one-time fix, see below
 ollama pull nomic-embed-text
-copy .env.example .env      # then edit .env, add GROQ_API_KEY
+copy .env.example .env            # then edit .env, add GROQ_API_KEY
 ```
-patch_ragas.py is a one-time fix. ragas 0.3.9 imports a Google Vertex AI class that no longer exists in current langchain-community versions — this project doesn't use Vertex AI, so the script just makes that import optional instead of crashing the app. Safe to re-run any time.
+## `patch_ragas.py` — what it's for
+
+The pinned `ragas` version imports a Google Vertex AI class that no
+longer exists in current `langchain-community`, which crashes the app
+on startup even though this project never touches Vertex AI. The script
+patches that import inside your installed `ragas` package so it fails
+silently instead of crashing.
+
+Run it once, right after installing dependencies and before running
+`main.py` / `app.py`:
+
+```powershell
+uv run python patch_ragas.py
+```
+
+Safe to re-run anytime — it detects if it's already patched and exits
+cleanly. Re-run it if you ever delete and recreate `.venv/`.
 
 ## Execution Steps
 
