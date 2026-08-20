@@ -19,15 +19,25 @@ Phase 2 - query (every question, the LangGraph part)
 ## Setup (using uv)
 
 Requirements: Python 3.11+, Node.js (for `npx`, used by the MCP server),
-[Ollama](https://ollama.com) installed and running, a free Groq API key,
+[Ollama](https://ollama.com) installed, a free Groq API key,
 [uv](https://docs.astral.sh/uv/) installed.
 
+**Terminal 1 — keep this running in the background:**
+```powershell
+ollama serve
+```
+(Skip this if Ollama is already running as a background service on your machine —
+check with `ollama list`; if that works without error, it's already up.)
+
+**Terminal 2 — project setup:**
 ```powershell
 uv venv
 uv pip install -r requirements.txt
 uv run python patch_ragas.py      # one-time fix, see below
 ollama pull nomic-embed-text
 copy .env.example .env            # then edit .env, add GROQ_API_KEY
+```
+
 ```
 ## `patch_ragas.py` — what it's for
 
@@ -48,6 +58,8 @@ Safe to re-run anytime — it detects if it's already patched and exits
 cleanly. Re-run it if you ever delete and recreate `.venv/`.
 
 ## Execution Steps
+Make sure `ollama serve` is still running in its own terminal (see Setup),
+then in your project terminal:
 
 ```powershell
 # the browser UI:
